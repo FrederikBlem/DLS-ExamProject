@@ -1,5 +1,7 @@
 # DLS-ExamProject
-This is the repository for my Development of Large Systems exam project
+This is the repository for my Development of Large Systems exam project.
+The project is based upon the DLS subject's assignment 2:<br>
+[Assignment 2 Document.](Documents/assignment2.pdf)
 
 ## Docker setup (and reset)
 
@@ -31,6 +33,9 @@ At the moment the database is modelled after this diagram:
 ![Might still change in case there's a smarter way to handle the references.](img/Roll_Call_DB_Diagram_v1.PNG "The first version of the database")
 
 ## Next steps and issues
+
+The original idea for this solo project was outlined in this document:<br>
+[Project Idea Document v1.](Documents/Project Idea Document v1.pdf)
 
 * The RollCall project needs quite a lot of work on the desired core functions. <br>I intend to create procedures in Postgresql for some or all of these.
 * I haven't decided how to handle the attendance code generation yet.
