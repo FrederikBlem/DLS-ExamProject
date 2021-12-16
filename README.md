@@ -1,2 +1,2 @@
 # DLS-ExamProject
-This is the repository for me Development of Large Systems exam project
+This is the repository for my Development of Large Systems exam project
