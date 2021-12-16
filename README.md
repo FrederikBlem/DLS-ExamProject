@@ -3,7 +3,7 @@ This is the repository for my Development of Large Systems exam project
 
 ## Docker setup (and reset)
 
-First time setup is done simply with the command:
+First time setup is done simply from the RollCall directory with the command:
 ```
 docker-compose up
 ```
