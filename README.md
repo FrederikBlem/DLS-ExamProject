@@ -7,11 +7,12 @@ First time setup is done simply with the command:
 ```
 docker-compose up
 ```
+This creates the Postgres database, creates tables and fills the tables with the prepared scripts in the sql folder.
 If you want to reset the database and fill it with the original data again, do so by running:
 ```
 docker-compose down
 ```
-Then delete the postgres-data folder in the RollCall folder and compose up again. This allows Docker to initiate from the sql-files in the sql folder again.
+Then **delete the postgres-data folder in the RollCall folder** and compose up again. This allows Docker to initiate from the sql-files in the sql folder again.
 
 ## Connecting to the database
 
