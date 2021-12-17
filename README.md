@@ -35,7 +35,7 @@ At the moment the database is modelled after this diagram:
 ## Next steps and issues
 
 The original idea for this solo project was outlined in this document:<br>
-[Project Idea Document v1.](Documents/Project Idea Document v1.pdf)
+[Project Idea Document v1.](Documents/Project_Idea_Document_v1.pdf)
 
 * The RollCall project needs quite a lot of work on the desired core functions. <br>I intend to create procedures in Postgresql for some or all of these.
 * I haven't decided how to handle the attendance code generation yet.
