@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   postgres:
-    image: postgres:10.5
+    image: postgres:14
     restart: always
     environment:
       - POSTGRES_USER=postgres
@@ -18,3 +18,5 @@ services:
       - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/1-create_tables.sql
       # copy the sql script to fill tables
       - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/2-fill_tables.sql
+      # copy the sql script to create functions and procedures
+      - ./sql/functions_and_procedures.sql:/docker-entrypoint-initdb.d/3-functions_and_procedures.sql

@@ -1,6 +1,6 @@
 # DLS-ExamProject
-This is the repository for my Development of Large Systems exam project.
-The project is based upon the DLS subject's assignment 2:<br>
+This is the repository for my Development of Large Systems exam project: [Online Repository.](https://github.com/FrederikBlem/DLS-ExamProject)
+The project is based upon the DLS subject's assignment 2 description:<br>
 [Assignment 2 Document.](Documents/assignment2.pdf)
 
 ## Docker setup (and reset)
@@ -9,7 +9,7 @@ First time setup is done simply from the RollCall directory with the command:
 ```
 docker-compose up
 ```
-This creates the Postgres database, creates tables and fills the tables with the prepared scripts in the sql folder.
+This creates the Postgres database, creates tables, fills the tables with some sample data and creates stored functions and procedures from the prepared scripts in the sql folder.
 If you want to reset the database and fill it with the original data again, do so by running:
 ```
 docker-compose down
@@ -27,17 +27,21 @@ username: postgres
 password: postgres
 ```
 
-## Database structure
+## Documentation, Database Structure & Methodology
+The original idea for this solo project was outlined in this document:<br>
+[Project Idea Document v1.](Documents/Project_Idea_Document_v1.pdf)
 
 At the moment the database is modelled after this diagram:
 ![Might still change in case there's a smarter way to handle the references.](img/Roll_Call_DB_Diagram_v1.PNG "The first version of the database")
 
+In order to wrap my head around the needed tasks, I made: [a simple Google Docs document for tracking them in user story format with dates added upon completion.](https://docs.google.com/document/d/1qgIEwmZaRYmEtGuFhZ3Tm7_wHyCYalyYmekJgt_QTjg/edit?usp=sharing)
+
 ## Next steps and issues
-
-The original idea for this solo project was outlined in this document:<br>
-[Project Idea Document v1.](Documents/Project_Idea_Document_v1.pdf)
-
-* The RollCall project needs quite a lot of work on the desired core functions. <br>I intend to create procedures in Postgresql for some or all of these.
-* I haven't decided how to handle the attendance code generation yet.
+* The RollCall project needs quite a lot of work on the desired core functions. <br>I intend to create procedures in Postgresql for some or all of these. <br>I want to implement REST to allow for Postman calls of the service.
+* I haven't decided how to handle the attendance code generation yet. At the moment you declare it yourself when creating the module.
 * I haven't decided how to handle the check-in time limit yet.
-* I'm cutting corners on security in order to save time.
+
+### Security and authentication issues as results of time-saving corner cutting.
+* Authentication will happen simply by supplying teacher_id or student_id and matching password when querying.
+* Passwords are stored as plain text.
+* Module attendance codes are stored as plain text.
