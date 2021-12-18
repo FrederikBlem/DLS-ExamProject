@@ -1,3 +1,6 @@
+/* Not every operation/query needs a function or procedure,
+   I chose to create a number of them to get a gentler difficulty curve on development */
+
 CREATE OR REPLACE FUNCTION AUTHENTICATE_STUDENT(
     given_id INTEGER,
     given_password VARCHAR
@@ -75,39 +78,36 @@ CREATE OR REPLACE PROCEDURE CREATE_MODULE_AND_ASSIGN_STUDENTS_OF_SUBJECT (
 )
     LANGUAGE plpgsql SECURITY DEFINER
 AS $$
-    declare new_module_id INTEGER;
-    declare subject_students INTEGER[];
+    declare new_module_id module.module_id%TYPE; -- Variable to hold the id of the newly created module.
+    declare subject_students_ids INTEGER[]; -- Array to hold the id's of the students assigned to the given subject.
 begin
-    subject_students := ARRAY(
-            SELECT student_id FROM subject_students WHERE subject_id = given_subject_id
-        );
+    -- Create the Module.
+    INSERT INTO public.module(teacher_id, subject_id, module_date, module_code)
+    VALUES (given_teacher_id, given_subject_id, given_module_date, given_module_code)
+    returning public.module.module_id into new_module_id; -- Receive the created module's id into the variable.
 
-    WITH NEW_MODULE AS(
-        INSERT INTO public.module(teacher_id, subject_id, module_date, module_code)
-            VALUES (given_teacher_id, given_subject_id, given_module_date, given_module_code)
-            returning module_id into new_module_id
-    )
-    INSERT INTO public.module_students(module_id, student_id)
-    SELECT 1 new_module_id, x
-    FROM unnest(subject_students) x;
+    -- Fill the array with id's of students already assigned to the subject.
+    subject_students_ids := ARRAY(
+    SELECT student_id FROM subject_students WHERE subject_id = given_subject_id
+    );
 
-    /*
+    -- Assign the students to the module using the array and the new module's id.
     INSERT INTO public.module_students(module_id, student_id)
-    VALUES (new_module_id, (SELECT student_id FROM subject_students WHERE subject_id = given_subject_id));
-    */
+    SELECT new_module_id, x
+    FROM unnest(subject_students_ids) x;
 
 end; $$;
 
-
-
 /* Procedure calls and Functions, too */
-
-/* /* This doesn't work yet */
-CALL CREATE_MODULE_AND_ASSIGN_STUDENTS_OF_SUBJECT(1, 1, '2021-12-20', 'physics-module-4');
-*/
 
 /*
 CALL INSERT_STUDENT('SeventhStudent@schoolmail.dk', 'Vodka123', '00000007');
+CALL ASSIGN_STUDENT_TO_SUBJECT_BY_ID(7, 1);
+
+/* This now works! */
+CALL CREATE_MODULE_AND_ASSIGN_STUDENTS_OF_SUBJECT(1, 1, '2021-12-20', 'physics-module-4');
+CALL CREATE_MODULE_AND_ASSIGN_STUDENTS_OF_SUBJECT(2, 2, '2021-12-20', 'astronomy-module-4');
+
 
 SELECT AUTHENTICATE_STUDENT(1, 'Coffee123');
 select AUTHENTICATE_TEACHER(1, 'CatsName123');
