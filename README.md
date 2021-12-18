@@ -31,8 +31,8 @@ password: postgres
 The original idea for this solo project was outlined in this document:<br>
 [Project Idea Document v1.](Documents/Project_Idea_Document_v1.pdf)
 
-At the moment the database is modelled after this diagram:
-![Might still change in case there's a smarter way to handle the references.](img/Roll_Call_DB_Diagram_v1.PNG "The first version of the database")
+At the moment the database is modelled after this diagram, which is version 2:
+![](img/Roll_Call_DB_Diagram_v2.PNG "The second version of the database")
 
 In order to wrap my head around the needed tasks, I made: [a simple Google Docs document for tracking them in user story format with dates added upon completion.](https://docs.google.com/document/d/1qgIEwmZaRYmEtGuFhZ3Tm7_wHyCYalyYmekJgt_QTjg/edit?usp=sharing)
 

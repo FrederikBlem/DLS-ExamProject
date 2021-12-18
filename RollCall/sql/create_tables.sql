@@ -34,11 +34,14 @@ CREATE TABLE IF NOT EXISTS public.Module(
 CREATE TABLE IF NOT EXISTS public.Module_students(
     module_students_id SERIAL PRIMARY KEY,
     module_id integer references public.Module,
-    student_id integer references public.Student
+    student_id integer references public.Student,
+    has_attended bool not null
 );
 
+/*
 CREATE TABLE IF NOT EXISTS public.Module_attendees(
     module_attendees_id SERIAL PRIMARY KEY,
     module_id integer references public.Module,
     student_id integer references public.Student
 );
+*/

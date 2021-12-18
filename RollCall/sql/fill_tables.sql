@@ -97,91 +97,93 @@ VALUES (DEFAULT, 2, 3);
 INSERT INTO public.Subject_students(subject_students_id, student_id, subject_id)
 VALUES (DEFAULT, 3, 3);
 
-/* Assign students to modules 1-3 (physics) */
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 1, 1);
+/* Assign students to modules 1-3 (physics) (and in this case they have already attended)*/
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 1, 1, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 2, 1);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 2, 1, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 3, 1);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 3, 1, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 1, 2);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 1, 2, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 2, 2);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 2, 2, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 3, 2);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 3, 2, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 1, 3);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 1, 3, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 2, 3);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 2, 3, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 3, 3);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 3, 3, true);
 
-/* Assign students to modules 4-6 (astronomy) */
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 4, 4);
+/* Assign students to modules 4-6 (astronomy) (and in this case they have already attended, except for student six)*/
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 4, 4, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 5, 4);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 5, 4, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 6, 4);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 6, 4, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 4, 5);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 4, 5, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 5, 5);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 5, 5, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 6, 5);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 6, 5, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 4, 6);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 4, 6, false);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 5, 6);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 5, 6, false);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 6, 6);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 6, 6, false);
 
-/* Assign students to modules 7-9 (mathematics) */
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 7, 1);
+/* Assign students to modules 7-9 (mathematics) (and they have attended, only 1 missed module by student 3)*/
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 7, 1, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 8, 1);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 8, 1, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 9, 1);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 9, 1, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 7, 2);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 7, 2, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 8, 2);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 8, 2, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 9, 2);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 9, 2, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 7, 3);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 7, 3, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 8, 3);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 8, 3, true);
 
-INSERT INTO public.Module_students(module_students_id, module_id, student_id)
-VALUES (DEFAULT, 9, 3);
+INSERT INTO public.Module_students(module_students_id, module_id, student_id, has_attended)
+VALUES (DEFAULT, 9, 3, false);
+
 
 /* Assign attendance of students to modules 1-3 (physics) */
+/*
 INSERT INTO public.Module_attendees(module_attendees_id, module_id, student_id)
 VALUES (DEFAULT, 1, 1);
 
@@ -208,8 +210,9 @@ VALUES (DEFAULT, 2, 3);
 
 INSERT INTO public.Module_attendees(module_attendees_id, module_id, student_id)
 VALUES (DEFAULT, 3, 3);
-
+*/
 /* Assign attendance of students to modules 4-6 (astronomy) */
+/*
 INSERT INTO public.Module_attendees(module_attendees_id, module_id, student_id)
 VALUES (DEFAULT, 4, 4);
 
@@ -227,7 +230,7 @@ VALUES (DEFAULT, 5, 5);
 
 INSERT INTO public.Module_attendees(module_attendees_id, module_id, student_id)
 VALUES (DEFAULT, 6, 5);
-
+*/
 /* /* Student six is absent */
 INSERT INTO public.Module_attendees(module_attendees_id, module_id, student_id)
 VALUES (DEFAULT, 4, 6);
@@ -240,6 +243,7 @@ VALUES (DEFAULT, 6, 6);
  */
 
 /* Assign attendance of students to modules 7-9 (mathematics) */
+/*
 INSERT INTO public.Module_attendees(module_attendees_id, module_id, student_id)
 VALUES (DEFAULT, 7, 1);
 
@@ -263,6 +267,7 @@ VALUES (DEFAULT, 7, 3);
 
 INSERT INTO public.Module_attendees(module_attendees_id, module_id, student_id)
 VALUES (DEFAULT, 8, 3);
+*/
 
 /* /* Student 3 is absent from the last module of the day */
 INSERT INTO public.Module_attendees(module_attendees_id, module_id, student_id)

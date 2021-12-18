@@ -69,7 +69,6 @@ end; $$;
 
 /* Still needs the fake authentication? - might do that separately using above functions*/
 
-/* THIS DOESN'T WORK YET */
 CREATE OR REPLACE PROCEDURE CREATE_MODULE_AND_ASSIGN_STUDENTS_OF_SUBJECT (
     given_teacher_id INTEGER,
     given_subject_id INTEGER,
@@ -92,13 +91,101 @@ begin
     );
 
     -- Assign the students to the module using the array and the new module's id.
-    INSERT INTO public.module_students(module_id, student_id)
-    SELECT new_module_id, x
+    INSERT INTO public.module_students(module_id, student_id, has_attended)
+    SELECT new_module_id, x, 0
     FROM unnest(subject_students_ids) x;
 
 end; $$;
 
+CREATE OR REPLACE FUNCTION GET_ASSIGNED_MODULES_OF_STUDENT_BY_ID(
+    given_student_id INTEGER
+)
+    returns integer[]
+    LANGUAGE plpgsql SECURITY DEFINER
+AS $$
+    --declare assigned_subjects integer[];
+    declare assigned_modules integer[];
+begin
+    -- Get the student's assigned subjects
+    /*
+    assigned_subjects := ARRAY(
+            SELECT subject_id FROM subject_students WHERE student_id = given_student_id
+        );
+    */
+    -- Get the student's assigned modules
+    assigned_modules := ARRAY(
+            SELECT module_id FROM module_students WHERE student_id = given_student_id
+        );
+
+    RETURN assigned_modules;
+
+end; $$;
+
+CREATE OR REPLACE FUNCTION GET_ATTENDED_MODULES_OF_STUDENT_BY_ID(
+    given_student_id INTEGER
+)
+returns integer[]
+    LANGUAGE plpgsql SECURITY DEFINER
+AS $$
+    --declare assigned_subjects integer[];
+    declare attended_modules integer[];
+begin
+    -- Get the student's assigned subjects
+    /*
+    assigned_subjects := ARRAY(
+            SELECT subject_id FROM subject_students WHERE student_id = given_student_id
+        );
+    */
+    -- Get the student's attended modules
+    attended_modules := ARRAY(
+            SELECT module_id FROM module_students WHERE student_id = given_student_id AND has_attended = true
+        );
+
+    RETURN attended_modules;
+end; $$;
+
+CREATE OR REPLACE FUNCTION GET_ATTENDANCE_PERCENTAGE_OF_STUDENT_BY_ID(
+    given_student_id INTEGER
+)
+    returns integer
+    LANGUAGE plpgsql SECURITY DEFINER
+AS $$
+    --declare assigned_subjects integer[];
+declare assigned_modules integer[];
+declare attended_modules integer[];
+declare assigned_count float;
+declare attended_count float;
+declare percentage_score integer;
+begin
+    -- Get the student's assigned subjects
+    /*
+    assigned_subjects := ARRAY(
+            SELECT subject_id FROM subject_students WHERE student_id = given_student_id
+        );
+    */
+    -- Get the student's score
+    assigned_modules := ARRAY(
+            SELECT module_id FROM module_students WHERE student_id = given_student_id
+        );
+    -- Get the student's attended modules
+    attended_modules := ARRAY(
+            SELECT module_id FROM module_students WHERE student_id = given_student_id AND has_attended = true
+        );
+
+    assigned_count = array_length(assigned_modules, 1);
+    attended_count = array_length(attended_modules, 1);
+
+    percentage_score = attended_count / assigned_count * 100;
+
+    RETURN percentage_score;
+
+end; $$;
+
 /* Procedure calls and Functions, too */
+
+--SELECT GET_ASSIGNED_MODULES_OF_STUDENT_BY_ID(3);
+--SELECT GET_ATTENDED_MODULES_OF_STUDENT_BY_ID(3);
+--SELECT GET_ATTENDANCE_PERCENTAGE_OF_STUDENT_BY_ID(3);
 
 /*
 CALL INSERT_STUDENT('SeventhStudent@schoolmail.dk', 'Vodka123', '00000007');
