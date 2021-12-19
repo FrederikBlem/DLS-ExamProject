@@ -258,6 +258,28 @@ begin
 
 end; $$;
 
+CREATE OR REPLACE FUNCTION RETRIEVE_MODULE_CODE_BY_ID(
+    given_module_id INTEGER
+)
+returns VARCHAR
+    LANGUAGE plpgsql SECURITY DEFINER
+AS $$
+    declare the_module_code varchar;
+begin
+        select module_code
+        into the_module_code
+        from module
+        where module_id = given_module_id;
+
+        IF the_module_code IS NOT NULL THEN
+            RETURN the_module_code;
+        ELSE
+            RETURN 'Did not find module code matching that id';
+        end if;
+
+
+end; $$;
+
 CREATE OR REPLACE FUNCTION CHECK_IN_STUDENT_TO_MODULE_BY_MODULE_CODE_AND_STUDENT_ID(
     given_module_code VARCHAR,
     given_student_id INTEGER
