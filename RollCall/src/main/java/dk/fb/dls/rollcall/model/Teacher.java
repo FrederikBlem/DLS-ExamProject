@@ -13,7 +13,9 @@ public class Teacher {
 
     @Column(unique = true)
     private String email;
+
     private String password;
+
     private String fullName;
 
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})

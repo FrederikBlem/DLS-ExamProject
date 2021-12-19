@@ -1,7 +1,6 @@
 package dk.fb.dls.rollcall.model;
 
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Data

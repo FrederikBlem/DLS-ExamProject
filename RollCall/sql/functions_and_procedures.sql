@@ -276,8 +276,6 @@ begin
         ELSE
             RETURN 'Did not find module code matching that id';
         end if;
-
-
 end; $$;
 
 CREATE OR REPLACE FUNCTION CHECK_IN_STUDENT_TO_MODULE_BY_MODULE_CODE_AND_STUDENT_ID(

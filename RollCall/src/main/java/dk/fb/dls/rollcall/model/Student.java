@@ -6,23 +6,29 @@ import java.util.*;
 
 @Data
 @Entity
-@Table(name = "Student")
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true)
+    @Column(name = "student_email",unique = true)
     private String email;
 
+    @Column(name = "student_password")
     private String password;
-    private String fullName;
+
+    @Column(name = "student_phone_number")
     private String phoneNumber;
 
-    @ManyToMany(cascade = {CascadeType.MERGE})
-    private List<Subject> subjects;
 
-    public Student() {}
+    public Student() {
+        super();
+    }
 
+    public Student(String email, String password, String phoneNumber){
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+    }
 }
