@@ -10,4 +10,5 @@ public class RollCallApplication {
         SpringApplication.run(RollCallApplication.class, args);
     }
 
+
 }
